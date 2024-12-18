@@ -12,7 +12,7 @@ output   [31:0]   q;       // Counter bus output with value
 reg      [7:0]   lsb_counter, first_counter, second_counter, msb_counter;
 
 // ===== Assignments =====
-assign value = {msb_counter, second_counter, first_counter, lsb_counter};
+assign q = {msb_counter, second_counter, first_counter, lsb_counter};
 
 //
 always @(posedge clk or negedge rst_)

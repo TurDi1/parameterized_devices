@@ -4,11 +4,13 @@ module param_counter #(
 (
    rst_,
    clk,
+   en
    q
 );
 // ===== Ports description =====
 input                           rst_;    // Active LOW reset input
 input                           clk;     // Clock input
+input                           en;      // Enable input
 output   [$clog2(MOD) -1 : 0]   q;       // Counter bus output with value
 
 // ===== Some parameters =====
@@ -22,13 +24,15 @@ generate
       wire                         enable;
       wire  [15 : 0]               q_out_wire;
 
-      assign enable = 1;
+      assign enable = en;
       assign q = counter;
 
       always @(posedge clk or negedge rst_)
       begin
          if (!rst_)
             counter <= 0;
+         else if (enable)
+
          else if (counter == MOD)
             counter <= 0;
          else if (enable)

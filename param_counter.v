@@ -32,11 +32,12 @@ generate
          if (!rst_)
             counter <= 0;
          else if (enable)
-
-         else if (counter == MOD)
-            counter <= 0;
-         else if (enable)
-            counter <= counter + 1;
+         begin
+            if (counter == MOD)
+               counter <= 0;
+            else
+               counter <= counter + 1;
+         end
          else
             counter <= counter;
       end

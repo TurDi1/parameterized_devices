@@ -1,5 +1,5 @@
 module reset_synchronizer #(
-    parameter num_ff = 2    // Number of flip-flops
+    parameter num_ff = 4    // Number of flip-flops
 )
 (
     clk,
@@ -28,6 +28,6 @@ assign reset = ff[num_ff - 1];
 //==================================
 always @(posedge clk)
 begin
-    ff  <= {ff[num_ff - 2], areset};
+    ff  <= {ff[num_ff - 2 : 0], areset};
 end
 endmodule
